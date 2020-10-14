@@ -1,4 +1,4 @@
-package ru.vukrox.periphery.proxy.ProgramTimeMeasurement;
+package ru.vukrox.periphery.proxy;
 
 /***
  * Class designed to measure the time to execute the programme.

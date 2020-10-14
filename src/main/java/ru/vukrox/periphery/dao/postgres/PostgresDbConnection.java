@@ -5,11 +5,12 @@ import ru.vukrox.periphery.configuration.AppConfiguration;
 import java.sql.*;
 
 /***
- * Class responsible for handling of the connection with DB.
- * It can open and close the connection to the DB.
+ * "PostgresDbConnection" responsible for handling of the connection with the PostgresDB.
+ * It can open and close the connection to the DB using 2 methods:
+ * - "establishConnection",
+ * - "closeConnection".
  */
-
-public class PostgreDBConnecton {
+public class PostgresDbConnection {
 
     //a method to open connection
     public static Connection establishConnection(AppConfiguration appConfiguration) {
@@ -34,7 +35,7 @@ public class PostgreDBConnecton {
     }
 
     //a method to close the connection
-    public static void closeConnetion(Connection connection) {
+    public static void closeConnection(Connection connection) {
         try {
             if (connection != null) {
                 connection.close();

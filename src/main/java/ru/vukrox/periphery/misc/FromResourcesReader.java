@@ -1,4 +1,4 @@
-package ru.vukrox.periphery.misc.SupportiveClasses;
+package ru.vukrox.periphery.misc;
 
 import java.io.File;
 import java.net.URL;

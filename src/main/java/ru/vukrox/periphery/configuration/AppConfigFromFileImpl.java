@@ -1,11 +1,20 @@
 package ru.vukrox.periphery.configuration;
 
-import ru.vukrox.periphery.misc.SupportiveClasses.FromResourcesReader;
+import ru.vukrox.periphery.misc.FromResourcesReader;
 
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Properties;
 
+/**
+ * "AppConfigFromFileImpl" - handles connection properties via ".properties" file excluding the need
+ * to get into the code in order to change the environment.
+ *
+ * methods:
+ * -load;
+ * -getInstance;
+ * -getConfigValue;
+ * */
 public class AppConfigFromFileImpl implements AppConfiguration {
 
     private static AppConfigFromFileImpl propertiesFileConfiguration;
@@ -13,6 +22,18 @@ public class AppConfigFromFileImpl implements AppConfiguration {
 
     private AppConfigFromFileImpl(Properties properties) throws IOException {
         this.properties = properties;
+    }
+
+    @Override
+    public String getConfigValue(String key) {
+        return properties.getProperty(key);
+    }
+
+    public static AppConfiguration getInstance() {
+        if (propertiesFileConfiguration == null) {
+            throw new IllegalArgumentException("Use method \"load\" for instance before use");
+        }
+        return propertiesFileConfiguration;
     }
 
     public static void load(String pathToFileWithProperties) throws IOException {
@@ -31,22 +52,10 @@ public class AppConfigFromFileImpl implements AppConfiguration {
                 localProperties.load(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
                 System.out.println(">>> Load properties from file success");
                 System.out.println(" key = url       value = " + localProperties.getProperty("url"));
-                System.out.println(" key = login     value = " + localProperties.getProperty("login"));
+                System.out.println(" key = user      value = " + localProperties.getProperty("user"));
                 System.out.println(" key = password  value = " + localProperties.getProperty("password"));
                 propertiesFileConfiguration = new AppConfigFromFileImpl(localProperties);
             }
         }
-    }
-
-    public static AppConfiguration getInstance() {
-        if (propertiesFileConfiguration == null) {
-            throw new IllegalArgumentException("Use method \"load\" for instance before use");
-        }
-        return propertiesFileConfiguration;
-    }
-
-    @Override
-    public String getConfigValue(String key) {
-        return properties.getProperty(key);
     }
 }

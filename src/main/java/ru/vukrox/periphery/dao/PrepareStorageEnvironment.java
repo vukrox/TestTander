@@ -1,7 +1,7 @@
 package ru.vukrox.periphery.dao;
-
-import java.util.Properties;
-
+/**
+ * Interface to simplify the possible impl of other environment types.
+ * */
 public interface PrepareStorageEnvironment {
 
     public void prepareStorageEnvironment();

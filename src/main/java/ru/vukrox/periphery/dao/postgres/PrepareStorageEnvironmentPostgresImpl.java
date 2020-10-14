@@ -5,7 +5,11 @@ import ru.vukrox.periphery.dao.PrepareStorageEnvironment;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/**
+ * "PrepareStorageEnvironmentPostgresImpl" - class to prepare the environment within the selected DB.
+ * "prepareStorageEnvironment"
+ * - creates a table "testtaskdb" inside a DB.
+ * */
 public class PrepareStorageEnvironmentPostgresImpl implements PrepareStorageEnvironment {
 
     private static final String SQL_CREATE_TABLE = "CREATE TABLE IF NOT EXISTS testtaskdb (field INTEGER NOT NULL);";
