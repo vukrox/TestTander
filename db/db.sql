@@ -1,5 +1,11 @@
-CREATE DATABASE TestTaskDB ENCODING 'UTF-8';
+CREATE DATABASE testtaskdb ENCODING 'UTF-8';
 
 CREATE TABLE IF NOT EXISTS testtaskdb (
-  FIELD  INT
+  FIELD  INTEGER NOT NULL
 );
+
+DELETE FROM testtaskdb;
+
+SELECT field FROM testtaskdb;
+
+INSERT INTO testtaskdb (field) VALUES (?)

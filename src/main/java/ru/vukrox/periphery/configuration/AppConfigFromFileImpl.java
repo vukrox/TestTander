@@ -36,6 +36,7 @@ public class AppConfigFromFileImpl implements AppConfiguration {
         return propertiesFileConfiguration;
     }
 
+    //"load" - loads data from .properties
     public static void load(String pathToFileWithProperties) throws IOException {
         if (propertiesFileConfiguration == null) {
             FromResourcesReader resourcesReader = new FromResourcesReader();
