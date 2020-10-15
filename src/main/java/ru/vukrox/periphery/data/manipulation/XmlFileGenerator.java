@@ -45,6 +45,7 @@ public class XmlFileGenerator {
             writer.close();
 
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
